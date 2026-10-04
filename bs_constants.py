@@ -23,5 +23,5 @@ PRESET_HELP = {
     "Kleines Turnier (8 Spieler)": "8 Spieler, 3 Runden, keine Freilose - der einfachste Fall.",
     "Ungerade Teilnehmerzahl mit Freilosen (10 Spieler)": "10 Spieler brauchen ein 16er-Feld: die obersten 6 Setzplätze bekommen automatisch ein Freilos in Runde 2 - ohne Sonderregel, allein aus der Setzliste.",
     "Eng gestaffeltes Feld (Ratings dicht beieinander)": "Kleine Rating-Unterschiede: die Setzung bringt dem Favoriten kaum eine höhere Siegchance, verhindert aber trotzdem ein frühes Spitzenduell.",
-    "Stark gestaffeltes Feld (klare Favoriten)": "Große Rating-Unterschiede: der Favorit gewinnt ohnehin fast immer - der Unterschied zwischen Setzung und Zufallslosung wird kleiner.",
+    "Stark gestaffeltes Feld (klare Favoriten)": "Große Rating-Unterschiede: der Favorit gewinnt deutlich häufiger (hier gut jedes zweite Turnier), die Setzung erhöht seine Siegchance aber nur um wenige Prozentpunkte - der Hauptnutzen bleibt strukturell: Setzplatz 1 und 2 treffen sich nie vor dem Finale.",
 }

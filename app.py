@@ -52,8 +52,8 @@ st.markdown(
 In einem **K.-o.-Turnier** ("Ausscheidungsturnier") scheidet aus, wer verliert - bei n Teilnehmern reichen
 **⌈log₂ n⌉ Runden** bis zum Sieger, statt der n−1 Runden eines Rundenturniers. Damit sich die stärksten
 Teilnehmer nicht schon in Runde 1 gegenseitig ausschalten, gibt es die **Setzliste**: ein Standard-Algorithmus
-(überall in Turniersoftware verwendet, von Tennis-Grand-Slams bis zur **FIDE-Weltmeisterschaft** mit ihrem
-128er-K.-o.-Baum) verteilt die Setzplätze so auf den Turnierbaum, dass Setzplatz 1 und 2 sich frühestens im
+(überall in Turniersoftware verwendet, von Tennis-Grand-Slams bis zum **FIDE World Cup** mit seinem
+256er-K.-o.-Baum) verteilt die Setzplätze so auf den Turnierbaum, dass Setzplatz 1 und 2 sich frühestens im
 **Finale** treffen können.
 """
 )
@@ -76,7 +76,7 @@ with st.expander("So funktioniert die Setzliste", expanded=True):
    Turnierbaum zusammenläuft.
 3. **Freilose ohne Sonderregel**: ist die Teilnehmerzahl keine Zweierpotenz, wird die nächstgrößere Feldgröße
    genommen und die überzähligen Plätze als "Phantome" behandelt - ein echter Spieler gegen ein Phantom rückt
-   automatisch vor. Das erzeugt von selbst das reale Turniermuster (z. B. FIDE-Weltmeisterschaft: die obersten
+   automatisch vor. Das erzeugt von selbst das reale Turniermuster (z. B. FIDE World Cup: die obersten
    50 Gesetzten bekommen ein Freilos in Runde 2).
 4. **Was die Setzliste NICHT tut**: sie ändert keine einzelne Gewinnwahrscheinlichkeit - nur WER auf WEN und
    WANN trifft. Ob das die Siegchance des Favoriten am Ende trotzdem spürbar erhöht, misst der Vergleich unten.
@@ -200,6 +200,6 @@ st.markdown("---")
 
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Turnierplanung: 7 Wege zum Turnierplan](https://sebastianhanisch.net/konzepte-turnierplanung.html)."
 )

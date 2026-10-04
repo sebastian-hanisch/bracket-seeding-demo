@@ -5,8 +5,8 @@
 Zweites Stück der **Turnierplanung-Linie** der "Konzepte"-Reihe für die Website "Sebastian Hanisch – Operations
 Research und Machine Learning". Ein **K.-o.-Turnier** braucht nur ⌈log₂ n⌉ Runden bis zum Sieger, statt der
 n−1 Runden eines Rundenturniers (Stück 1 dieser Linie) – dafür scheidet aus, wer einmal verliert. Die
-**Setzliste** ist der Standard-Algorithmus (Tennis-Grand-Slams, NCAA, die **FIDE-Weltmeisterschaft** mit ihrem
-128er-K.-o.-Baum), der die stärksten Teilnehmer im Turnierbaum so verteilt, dass sie sich frühestens im
+**Setzliste** ist der Standard-Algorithmus (Tennis-Grand-Slams, NCAA, der **FIDE World Cup** mit seinem
+256er-K.-o.-Baum), der die stärksten Teilnehmer im Turnierbaum so verteilt, dass sie sich frühestens im
 **Finale** treffen können. Diese Demo baut die Setzliste exakt nach diesem Standard und misst per Monte-Carlo-
 Simulation (Elo-Erwartungswert je Partie), was sie wirklich bringt – strukturell und in Zahlen.
 
@@ -15,7 +15,7 @@ Geplante Linie:
 ```
 Rundenturnier (Stück 1, gebaut+gepusht+deployed)
  ├─ K.-o.-System + Setzliste (dieses Stück)
- └─ Schweizer System (FIDE-Dutch-Regelwerk, volle C1-C21-Kriterienhierarchie)   [geplant, zuletzt]
+ └─ Schweizer System (FIDE-Dutch-Regelwerk, volle C1-C21-Kriterienhierarchie)   [gebaut: schweizer-system-demo]
 ```
 
 ## Ergebnis (Zahlen aus den Tests)
@@ -24,7 +24,7 @@ Rundenturnier (Stück 1, gebaut+gepusht+deployed)
 |---|---|
 | Stimmt die Setzliste mit der öffentlich bekannten Standardtafel überein? | ✅ Für 16 Plätze exakt `[1,16,8,9,4,13,5,12,2,15,7,10,3,14,6,11]` – dieselbe Reihenfolge wie z. B. Tennis-Grand-Slam-Raster. |
 | Treffen sich Setzplatz 1 und 2 je vor dem Finale? | ✅ **Strukturell nie** unter der Setzliste (bewiesen über die Halbierungs-Eigenschaft, für n = 4…64 getestet) – bei zufälliger Auslosung dagegen in 9–43 % der Turniere, je nach Feldgröße/Rating-Streuung. |
-| Wie werden Freilose bei Nicht-Zweierpotenz verteilt? | ✅ Automatisch die obersten Setzplätze (kein Sonderfall nötig) – bei 10 Spielern exakt die Plätze 1–6, deckungsgleich mit dem realen FIDE-Weltmeisterschaft-Muster (oberste Gesetzte bekommen ein Freilos in Runde 2). |
+| Wie werden Freilose bei Nicht-Zweierpotenz verteilt? | ✅ Automatisch die obersten Setzplätze (kein Sonderfall nötig) – bei 10 Spielern exakt die Plätze 1–6, deckungsgleich mit dem realen FIDE-World-Cup-Muster (oberste Gesetzte bekommen ein Freilos in Runde 2). |
 | Erhöht Setzung die Siegchance des Favoriten? | ⚠️ Ja, aber **moderat**: +2–3 Prozentpunkte bei mittlerer Rating-Streuung (Monte-Carlo, 4.000 Wiederholungen je Politik), kein dramatischer Sprung. |
 | Sinkt die Gesamt-Überraschungsrate durch Setzung? | ⚠️ Leicht, ja – ursprünglich als Invarianz vermutet, dann widerlegt: die Politiken unterscheiden sich real um wenige Prozentpunkte, näher zueinander bei sehr großer Rating-Streuung. |
 
@@ -56,7 +56,7 @@ zufällig verteilter Rating-Gefälle. Dieser Fund steht so in Code und Tests, ni
 - **Elo-Erwartungswert** (`bs_elo.py`, Arpad Elo/USCF/FIDE-Standard): $E_A = 1/(1+10^{(R_B-R_A)/400})$.
 - **Turniersimulation & Monte-Carlo-Vergleich** (`bs_evaluation.py`): spielt den ganzen Baum durch, vergleicht
   Politik "gesetzt" gegen "zufällig" über viele Wiederholungen.
-- **Quellen**: [handbook.fide.com](https://handbook.fide.com) (FIDE-Weltmeisterschaft, Freilos-Muster),
+- **Quellen**: [handbook.fide.com](https://handbook.fide.com) (FIDE World Cup, Freilos-Muster),
   [en.wikipedia.org/wiki/Seeding_(sports)](https://en.wikipedia.org/wiki/Seeding_(sports)) (Summeneigenschaft
   je Runde, unabhängige Bestätigung der Setzlisten-Konstruktion).
 
@@ -105,6 +105,4 @@ jeweils neuesten Bibliotheksversionen.
 
 ---
 
-Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research
-und Machine Learning. Interesse an einer maßgeschneiderten Lösung für Ihr Unternehmen?
-[Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Turnierplanung: 7 Wege zum Turnierplan](https://sebastianhanisch.net/konzepte-turnierplanung.html).
