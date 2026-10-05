@@ -157,15 +157,30 @@ st.plotly_chart(build_policy_comparison_chart(stats), width="stretch", key="poli
 seeded, rand = stats["seeded"], stats["random"]
 gap_win = (seeded.p_top_seed_wins - rand.p_top_seed_wins) * 100
 gap_upset = (rand.upset_rate - seeded.upset_rate) * 100
+upset_phrase = (
+    f"sinkt um **{gap_upset:.1f} Prozentpunkte**" if gap_upset >= 0
+    else f"steigt um **{-gap_upset:.1f} Prozentpunkte**"
+)
+win_phrase = (
+    f"steigt durch die Setzung um **{gap_win:+.1f} Prozentpunkte**" if gap_win >= 0
+    else f"sinkt durch die Setzung um **{-gap_win:.1f} Prozentpunkte**"
+)
+bye_note = (
+    " Bei Nicht-Zweierpotenzen bekommen die obersten Gesetzten Freilose und überspringen die leichten"
+    " Runde-1-Partien; übrig bleiben Partien zwischen ähnlich stark gesetzten Spielern mit vielen Überraschungen -"
+    " deshalb kann die Überraschungsrate unter der Setzliste auch steigen."
+    if n_players & (n_players - 1) else ""
+)
 st.markdown(
     f"""
 - **Strukturell exakt**: unter der Setzliste treffen sich Setzplatz 1 und 2 **nie** vor dem Finale (bewiesen
   durch die Konstruktion, hier über {C.MONTE_CARLO_REPS} Läufe bestätigt: {seeded.p_top2_meet_before_final * 100:.0f} %)
   - bei zufälliger Auslosung dagegen in **{rand.p_top2_meet_before_final * 100:.0f} %** der Turniere.
-- **Gemessen, moderat**: die Siegchance des Favoriten steigt durch die Setzung um **{gap_win:+.1f} Prozentpunkte**
+- **Gemessen, moderat**: die Siegchance des Favoriten {win_phrase}
   ({seeded.p_top_seed_wins * 100:.1f} % gegen {rand.p_top_seed_wins * 100:.1f} %), die Gesamt-Überraschungsrate
-  sinkt um **{gap_upset:.1f} Prozentpunkte**. Beides real, aber nicht dramatisch - der Hauptbeitrag der Setzliste
-  ist strukturell (WER auf WEN trifft), nicht eine große Verschiebung der Gesamtwahrscheinlichkeiten.
+  {upset_phrase}. Beides keine große Verschiebung; zur Einordnung: die Monte-Carlo-Streuung eines
+  Unterschieds beträgt etwa 1 Prozentpunkt bei {C.MONTE_CARLO_REPS} Läufen je Politik - der Hauptbeitrag der Setzliste ist strukturell (WER auf WEN trifft),
+  nicht eine große Verschiebung der Gesamtwahrscheinlichkeiten.{bye_note}
 """
 )
 

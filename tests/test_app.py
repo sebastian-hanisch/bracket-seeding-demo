@@ -74,3 +74,16 @@ def test_resimulate_button_changes_live_seed():
     resim_button.click().run()
     assert not at.exception
     assert at.session_state["live_seed"] == 1
+
+
+def test_upset_rate_sentence_follows_the_measured_direction():
+    # Mit Freilosen (10 Spieler, Streuung 300) steigt die Überraschungsrate unter der Setzliste (exakt gerechnet in
+    # test_oracle_bracket.py); der Text darf dann nicht "sinkt um -x" sagen.
+    def setup(at):
+        at.session_state["n_players_slider"] = 10
+        at.session_state["rating_spread_slider"] = 300.0
+
+    at = _run(setup)
+    text = " ".join(m.value for m in at.markdown)
+    assert "Überraschungsrate\n  steigt um" in text
+    assert "sinkt um **-" not in text

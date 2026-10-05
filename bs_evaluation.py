@@ -5,7 +5,8 @@ policy="seeded" STRUKTURELL NIE vor dem Finale (0 %, bewiesen in tests/test_brac
 Halbierungs-Eigenschaft der Setzliste) - bei zufälliger Auslosung dagegen mit spürbarer Wahrscheinlichkeit.
 Die Siegchance des Favoriten und die Gesamt-Überraschungsrate unterscheiden sich zwischen den Politiken nur
 MODERAT (wenige Prozentpunkte, kein Invarianz- und kein Dramatik-Fall) - beides real mit 15.000+ Wiederholungen
-gemessen, nicht behauptet.
+gemessen, nicht behauptet. Die Überraschungsrate sinkt unter der Setzliste nur bei Zweierpotenz-Feldern; bei
+Feldern mit Freilosen steigt sie (die Topgesetzten überspringen die leichten Runde-1-Partien).
 """
 
 from __future__ import annotations
